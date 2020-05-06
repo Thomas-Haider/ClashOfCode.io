@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<style type="text/css">
+</style>
+<h:head><h:outputStylesheet name="css/font-awesome.css" library="awesome"/></h:head>
+<h:body>
+    <h:form id="menu">
+        <p:menubar>
+            <p:submenu label="Games">
+                <p:menuitem value="Home" action="#{Connect4Bean.backToHomeAjax()}"/>
+            </p:submenu>
+            <p:submenu label="Connect 4">
+                <p:menuitem>
+                    <h:commandButton value="Restart Game" action="#{Connect4Bean.startGame()}">
+                        <f:ajax render=":game:gameField :Winner:winnerText"></f:ajax>
+                    </h:commandButton>
+                </p:menuitem>
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+    <br></br>
+    <h:form id="game">
+        <p:dataTable id="gameField" var="gameField" value="#{Connect4Bean.twoDArrayToList()}">
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" id="move1" action="#{Connect4Bean.makeMove(0)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(0)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(1)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(1)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(2)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(2)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(3)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(3)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(4)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(4)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(5)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(5)}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:commandButton value="Set" action="#{Connect4Bean.makeMove(6)}">
+                        <f:ajax render="gameField :Winner:winnerText" />
+                    </h:commandButton>
+                </f:facet>
+                <h:outputText value="#{gameField.get(6)}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+    <h:form id="Winner">
+        <br></br>
+        <h:outputText id="winnerText" value="#{Connect4Bean.winnerText}" style="font-style: italic; font-size: 50px"></h:outputText>
+    </h:form>
+</h:body>
+</html>
